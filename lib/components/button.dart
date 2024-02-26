@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ButtonCalculator extends StatelessWidget {
-  const ButtonCalculator({super.key});
+  const ButtonCalculator({super.key, required this.text, this.foregroundColor = defaultForegroundColor, this. backgroundColor = defaultBackgroundColor});
+  const ButtonCalculator.operation({super.key, required this.text, this.foregroundColor = defaultForegroundColorOperation, this. backgroundColor = defaultBackgroundColor});
+
+  static const defaultBackgroundColor = Color.fromARGB(255, 34, 34, 34);
+  static const defaultForegroundColor = Color.fromARGB(255, 255, 187, 0);
+  static const defaultForegroundColorOperation = Color.fromARGB(255, 43, 185, 0);
+
+  final String text;
+  final Color foregroundColor;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -9,14 +18,14 @@ class ButtonCalculator extends StatelessWidget {
       onTap: () => {},
       child: Container(
         margin: const EdgeInsets.all(5),
-        decoration: const BoxDecoration(
-            color: Colors.amber,
+        decoration: BoxDecoration(
+            color: backgroundColor,
             shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: const Center(
+            borderRadius: const BorderRadius.all(Radius.circular(20))),
+        child: Center(
             child: Text(
-          "1",
-          style: TextStyle(color: Colors.white, fontSize: 50),
+          text,
+          style: TextStyle(color: foregroundColor, fontSize: 50),
         )),
       ),
     );
